@@ -39,8 +39,9 @@ def parse_uart_rx_packet(packet):
 # address는 정수입니다.
 # 유효하면 True, 아니면 False를 반환해야 합니다.
 def is_valid_i2c_address(address):
-    raise NotImplementedError
-
+    if 0 <= address <= 127: 
+        return True 
+    return False
 
 # 문제 5.
 #
@@ -53,4 +54,5 @@ def is_valid_i2c_address(address):
 #
 # [command, payload_length, payload...]
 def make_spi_transfer_frame(command, payload):
-    raise NotImplementedError
+    return [command, len(payload)] + payload
+   
